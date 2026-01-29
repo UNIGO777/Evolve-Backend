@@ -1,6 +1,24 @@
 const path = require('path')
 
 const Upload = require('../models/Upload')
+const RecentActivity = require('../models/RecentActivity')
+
+const logRecentActivity = async ({ req, action, actor, details }) => {
+  try {
+    await RecentActivity.create({
+      action,
+      controller: 'uploadController',
+      actor,
+      method: req?.method,
+      path: req?.originalUrl,
+      ip: req?.ip,
+      userAgent: req?.get?.('user-agent'),
+      details,
+    })
+  } catch (err) {
+    return
+  }
+}
 
 const listUploads = async (req, res, next) => {
   try {
@@ -37,6 +55,18 @@ const createUpload = async (req, res, next) => {
       kind: 'file',
     })
 
+    await logRecentActivity({
+      req,
+      action: 'upload.created',
+      actor: req.admin?.email,
+      details: {
+        uploadId: String(doc?._id || ''),
+        kind: doc?.kind,
+        originalName: doc?.originalName,
+        relativePath: doc?.relativePath,
+      },
+    })
+
     res.status(201).json({
       ok: true,
       upload: doc,
@@ -64,6 +94,18 @@ const createUploadByKind =
         mimetype: req.file.mimetype,
         size: req.file.size,
         kind,
+      })
+
+      await logRecentActivity({
+        req,
+        action: 'upload.created',
+        actor: req.admin?.email,
+        details: {
+          uploadId: String(doc?._id || ''),
+          kind: doc?.kind,
+          originalName: doc?.originalName,
+          relativePath: doc?.relativePath,
+        },
       })
 
       res.status(201).json({

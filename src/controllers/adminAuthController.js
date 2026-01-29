@@ -2,9 +2,27 @@ const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
 const AdminOtp = require('../models/AdminOtp')
+const RecentActivity = require('../models/RecentActivity')
 const { sendMail } = require('../utils/mailer')
 
 const normalizeEmail = (value) => String(value || '').trim().toLowerCase()
+
+const logRecentActivity = async ({ req, action, actor, details }) => {
+  try {
+    await RecentActivity.create({
+      action,
+      controller: 'adminAuthController',
+      actor,
+      method: req?.method,
+      path: req?.originalUrl,
+      ip: req?.ip,
+      userAgent: req?.get?.('user-agent'),
+      details,
+    })
+  } catch (err) {
+    return
+  }
+}
 
 const getOtpSecret = () => {
   const secret = process.env.ADMIN_OTP_SECRET || process.env.ADMIN_JWT_SECRET
@@ -74,6 +92,13 @@ const requestAdminOtp = async (req, res, next) => {
       </div>`,
     })
 
+    await logRecentActivity({
+      req,
+      action: 'admin.otp_requested',
+      actor: adminEmail,
+      details: { email: adminEmail },
+    })
+
     res.json({ ok: true, message: 'OTP sent' })
   } catch (err) {
     next(err)
@@ -129,6 +154,14 @@ const verifyAdminOtp = async (req, res, next) => {
     }
 
     const token = jwt.sign({ sub: 'admin', email: adminEmail }, jwtSecret, { expiresIn: '1d' })
+
+    await logRecentActivity({
+      req,
+      action: 'admin.login',
+      actor: adminEmail,
+      details: { email: adminEmail },
+    })
+
     res.json({ ok: true, token })
   } catch (err) {
     next(err)
