@@ -6,6 +6,18 @@ const {
   updateHomeHero,
   getHomeAbout,
   updateHomeAbout,
+  getAboutHero,
+  updateAboutHero,
+  getAboutIntro,
+  updateAboutIntro,
+  getAboutTabs,
+  updateAboutTabs,
+  getAboutWhyChoose,
+  updateAboutWhyChoose,
+  getAboutHelp,
+  updateAboutHelp,
+  getAboutTeam,
+  updateAboutTeam,
   getHomeServices,
   updateHomeServices,
   getHomeProcess,
@@ -25,6 +37,24 @@ router.put('/hero', requireAdmin, updateHomeHero)
 
 router.get('/about', getHomeAbout)
 router.put('/about', requireAdmin, updateHomeAbout)
+
+router.get('/about-hero', getAboutHero)
+router.put('/about-hero', requireAdmin, updateAboutHero)
+
+router.get('/about-intro', getAboutIntro)
+router.put('/about-intro', requireAdmin, updateAboutIntro)
+
+router.get('/about-tabs', getAboutTabs)
+router.put('/about-tabs', requireAdmin, updateAboutTabs)
+
+router.get('/about-why', getAboutWhyChoose)
+router.put('/about-why', requireAdmin, updateAboutWhyChoose)
+
+router.get('/about-help', getAboutHelp)
+router.put('/about-help', requireAdmin, updateAboutHelp)
+
+router.get('/about-team', getAboutTeam)
+router.put('/about-team', requireAdmin, updateAboutTeam)
 
 router.get('/services', getHomeServices)
 router.put('/services', requireAdmin, updateHomeServices)

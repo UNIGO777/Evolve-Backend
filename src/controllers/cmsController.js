@@ -1,5 +1,11 @@
 const HeroContent = require('../models/HeroContent')
 const AboutContent = require('../models/AboutContent')
+const AboutHeroContent = require('../models/AboutHeroContent')
+const AboutIntroContent = require('../models/AboutIntroContent')
+const AboutTabsContent = require('../models/AboutTabsContent')
+const AboutWhyChooseContent = require('../models/AboutWhyChooseContent')
+const AboutHelpContent = require('../models/AboutHelpContent')
+const AboutTeamContent = require('../models/AboutTeamContent')
 const ServicesContent = require('../models/ServicesContent')
 const ProcessContent = require('../models/ProcessContent')
 const TestimonialsContent = require('../models/TestimonialsContent')
@@ -9,6 +15,12 @@ const RecentActivity = require('../models/RecentActivity')
 
 const HERO_KEY = 'home_hero'
 const ABOUT_KEY = 'home_about'
+const ABOUT_HERO_KEY = 'about_hero'
+const ABOUT_INTRO_KEY = 'about_intro'
+const ABOUT_TABS_KEY = 'about_tabs'
+const ABOUT_WHY_KEY = 'about_why'
+const ABOUT_HELP_KEY = 'about_help'
+const ABOUT_TEAM_KEY = 'about_team'
 const SERVICES_KEY = 'home_services'
 const PROCESS_KEY = 'home_process'
 const TESTIMONIALS_KEY = 'home_testimonials'
@@ -69,6 +81,149 @@ const defaultAbout = () => ({
     { value: '200+', label: 'Expert Team' },
     { value: '350+', label: 'Happy Customers' },
     { value: '16+', label: 'Years of Experience' },
+  ],
+})
+
+const defaultAboutHero = () => ({
+  key: ABOUT_HERO_KEY,
+  title: 'About Us',
+  kicker: 'Evolv Digitals',
+  backgroundImage:
+    'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2200&q=60',
+})
+
+const defaultAboutIntro = () => ({
+  key: ABOUT_INTRO_KEY,
+  label: 'ABOUT EVOLV',
+  h1: 'Innovative Strategies',
+  h2: 'for Digital Growth',
+  p1: 'We help brands scale with performance marketing, thoughtful design, and product-led strategy across channels.',
+  p2: 'Our focus stays simple: measurable outcomes, better customer experience, and long-term trust built on execution.',
+  points: [
+    'Custom strategy & planning',
+    'SEO & content growth',
+    'Performance marketing',
+    'Branding & design systems',
+    'Analytics & optimization',
+    'Scalable tech support',
+  ],
+  cta: 'Learn More',
+  exp1: '25+',
+  exp2: 'Years of Experience',
+  image1Url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=60',
+  image2Url: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=60',
+})
+
+const defaultAboutTabs = () => ({
+  key: ABOUT_TABS_KEY,
+  tabs: [
+    {
+      title: 'Our Vision',
+      desc: 'Build brands that earn trust and scale sustainably with strong digital foundations and consistent execution.',
+      panelTitle: 'Our vision prepares you for long-term growth',
+      panelDesc:
+        'We combine brand, performance, and product thinking to build scalable growth systems—short-term wins with long-term trust.',
+      panelCta: 'Contact Us',
+      panelHref: '/#contact',
+      panelImage: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=2000&q=60',
+    },
+    {
+      title: 'Our Mission',
+      desc: 'Deliver measurable growth through strategy, design, marketing, and analytics—aligned to business goals.',
+      panelTitle: 'Our mission is to deliver measurable results',
+      panelDesc:
+        'Goal-first planning, fast execution, and transparent reporting—so you always know what’s working and why.',
+      panelCta: 'Contact Us',
+      panelHref: '/#contact',
+      panelImage: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=2000&q=60',
+    },
+    {
+      title: 'Our History',
+      desc: 'From small beginnings to a growth partner for teams—our journey is defined by results and relationships.',
+      panelTitle: 'Our history is built on execution and trust',
+      panelDesc: 'We’ve partnered with teams to ship campaigns and full-funnel systems—always focused on measurable outcomes.',
+      panelCta: 'Contact Us',
+      panelHref: '/#contact',
+      panelImage: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=2000&q=60',
+    },
+  ],
+})
+
+const defaultAboutWhy = () => ({
+  key: ABOUT_WHY_KEY,
+  whyLabel: 'WHY CHOOSE US',
+  whyTitle1: 'Reliable Digital Solutions',
+  whyTitle2: 'Tailored to Your Needs',
+  whyDesc: 'A clear process, experienced execution, and transparent reporting—built to deliver growth you can measure.',
+  whyCardTitle: 'Growth Research for Results Mastery',
+  imageUrl: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?auto=format&fit=crop&w=1600&q=60',
+  skills: [
+    { label: 'Analytical Skill', value: 94 },
+    { label: 'Marketing Knowledge', value: 98 },
+    { label: 'Advisory & Consultation', value: 93 },
+    { label: 'Problem-Solving Skills', value: 96 },
+  ],
+})
+
+const defaultAboutHelp = () => ({
+  key: ABOUT_HELP_KEY,
+  helpTitle: "We're here to help you achieve your goals",
+  helpDesc: 'From strategy to execution, we deliver clear plans and measurable actions that improve brand and performance.',
+  helpCta: 'Contact Us',
+  helpHref: '/#contact',
+  imageUrl: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=2000&q=60',
+  cards: [
+    {
+      title: 'Commitment',
+      desc: 'We stay focused on delivery and outcomes so progress is visible in every sprint.',
+      icon: 'gear',
+    },
+    {
+      title: 'Honesty',
+      desc: 'Transparent reporting and clear communication, so decisions stay data-driven.',
+      icon: 'scale',
+    },
+    {
+      title: 'Growth',
+      desc: 'Continuous optimization and experimentation to build sustainable growth systems.',
+      icon: 'chart',
+    },
+  ],
+})
+
+const defaultAboutTeam = () => ({
+  key: ABOUT_TEAM_KEY,
+  teamLabel: 'OUR TEAM',
+  teamTitle: 'Meet Our Professional Team',
+  teamDesc: 'A team of strategists, creatives, and performance marketers focused on measurable outcomes and clean execution.',
+  teamCta: 'View More',
+  teamHref: '#',
+  members: [
+    {
+      name: 'Mark Joseph',
+      role: 'Growth Strategist',
+      image: 'https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=1600&q=60',
+    },
+    {
+      name: 'Ella Grace',
+      role: 'Performance Marketer',
+      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=1600&q=60',
+    },
+    {
+      name: 'Kylian Herrera',
+      role: 'Creative Lead',
+      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1600&q=60',
+    },
+    {
+      name: 'Noah Carter',
+      role: 'SEO Specialist',
+      image: 'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=1600&q=60',
+    },
+    {
+      name: 'Sophia Patel',
+      role: 'Content Strategist',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1600&q=60',
+    },
   ],
 })
 
@@ -422,6 +577,348 @@ const getHomeAbout = async (req, res, next) => {
   }
 }
 
+const getAboutHero = async (req, res, next) => {
+  try {
+    const doc = await AboutHeroContent.findOneAndUpdate(
+      { key: ABOUT_HERO_KEY },
+      { $setOnInsert: defaultAboutHero() },
+      { upsert: true, new: true }
+    ).lean()
+
+    res.json({ ok: true, hero: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const updateAboutHero = async (req, res, next) => {
+  try {
+    const defaults = defaultAboutHero()
+    const incomingBg = toStringOrEmpty(req.body?.backgroundImage || req.body?.backgroundUrl)
+    const nextDoc = {
+      title: toStringOrEmpty(req.body?.title) || defaults.title,
+      kicker: toStringOrEmpty(req.body?.kicker) || defaults.kicker,
+      backgroundImage: incomingBg || defaults.backgroundImage,
+    }
+
+    const doc = await AboutHeroContent.findOneAndUpdate(
+      { key: ABOUT_HERO_KEY },
+      { $set: nextDoc, $setOnInsert: { key: ABOUT_HERO_KEY } },
+      { upsert: true, new: true }
+    ).lean()
+
+    await logRecentActivity({
+      req,
+      action: 'cms.updated',
+      actor: req.admin?.email,
+      details: { key: ABOUT_HERO_KEY },
+    })
+
+    res.json({ ok: true, hero: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const normalizeAboutTabs = (tabs) => {
+  if (!Array.isArray(tabs)) return []
+  return tabs
+    .map((t) => ({
+      title: toStringOrEmpty(t?.title),
+      desc: toStringOrEmpty(t?.desc),
+      panelTitle: toStringOrEmpty(t?.panelTitle),
+      panelDesc: toStringOrEmpty(t?.panelDesc),
+      panelCta: toStringOrEmpty(t?.panelCta),
+      panelHref: toStringOrEmpty(t?.panelHref),
+      panelImage: toStringOrEmpty(t?.panelImage),
+    }))
+    .filter((t) => t.title || t.desc || t.panelTitle || t.panelDesc || t.panelCta || t.panelHref || t.panelImage)
+    .slice(0, 6)
+}
+
+const normalizeAboutWhySkills = (skills) => {
+  if (!Array.isArray(skills)) return []
+  return skills
+    .map((s) => {
+      const value = Number(s?.value)
+      return {
+        label: toStringOrEmpty(s?.label),
+        value: Number.isFinite(value) ? value : 0,
+      }
+    })
+    .filter((s) => s.label)
+    .slice(0, 12)
+}
+
+const normalizeAboutHelpCards = (cards) => {
+  if (!Array.isArray(cards)) return []
+  return cards
+    .map((c) => ({
+      title: toStringOrEmpty(c?.title),
+      desc: toStringOrEmpty(c?.desc),
+      icon: toStringOrEmpty(c?.icon),
+    }))
+    .filter((c) => c.title || c.desc || c.icon)
+    .slice(0, 12)
+}
+
+const normalizeAboutTeamMembers = (members) => {
+  if (!Array.isArray(members)) return []
+  return members
+    .map((m) => ({
+      name: toStringOrEmpty(m?.name),
+      role: toStringOrEmpty(m?.role),
+      image: toStringOrEmpty(m?.image),
+    }))
+    .filter((m) => m.name || m.role || m.image)
+    .slice(0, 24)
+}
+
+const getAboutIntro = async (req, res, next) => {
+  try {
+    const doc = await AboutIntroContent.findOneAndUpdate(
+      { key: ABOUT_INTRO_KEY },
+      { $setOnInsert: defaultAboutIntro() },
+      { upsert: true, new: true }
+    ).lean()
+
+    res.json({ ok: true, intro: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const updateAboutIntro = async (req, res, next) => {
+  try {
+    const defaults = defaultAboutIntro()
+    const incomingPoints = normalizeStringList(req.body?.points, 24)
+
+    const nextDoc = {
+      label: toStringOrEmpty(req.body?.label) || defaults.label,
+      h1: toStringOrEmpty(req.body?.h1) || defaults.h1,
+      h2: toStringOrEmpty(req.body?.h2) || defaults.h2,
+      p1: toStringOrEmpty(req.body?.p1) || defaults.p1,
+      p2: toStringOrEmpty(req.body?.p2) || defaults.p2,
+      points: incomingPoints.length ? incomingPoints : defaults.points,
+      cta: toStringOrEmpty(req.body?.cta) || defaults.cta,
+      exp1: toStringOrEmpty(req.body?.exp1) || defaults.exp1,
+      exp2: toStringOrEmpty(req.body?.exp2) || defaults.exp2,
+      image1Url: toStringOrEmpty(req.body?.image1Url) || defaults.image1Url,
+      image2Url: toStringOrEmpty(req.body?.image2Url) || defaults.image2Url,
+    }
+
+    const doc = await AboutIntroContent.findOneAndUpdate(
+      { key: ABOUT_INTRO_KEY },
+      { $set: nextDoc, $setOnInsert: { key: ABOUT_INTRO_KEY } },
+      { upsert: true, new: true }
+    ).lean()
+
+    await logRecentActivity({
+      req,
+      action: 'cms.updated',
+      actor: req.admin?.email,
+      details: { key: ABOUT_INTRO_KEY },
+    })
+
+    res.json({ ok: true, intro: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const getAboutTabs = async (req, res, next) => {
+  try {
+    const doc = await AboutTabsContent.findOneAndUpdate(
+      { key: ABOUT_TABS_KEY },
+      { $setOnInsert: defaultAboutTabs() },
+      { upsert: true, new: true }
+    ).lean()
+
+    res.json({ ok: true, tabs: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const updateAboutTabs = async (req, res, next) => {
+  try {
+    const defaults = defaultAboutTabs()
+    const incomingTabs = normalizeAboutTabs(req.body?.tabs)
+
+    const nextTabs = defaults.tabs.map((d, idx) => {
+      const t = incomingTabs[idx] || {}
+      return {
+        title: t.title || d.title,
+        desc: t.desc || d.desc,
+        panelTitle: t.panelTitle || d.panelTitle,
+        panelDesc: t.panelDesc || d.panelDesc,
+        panelCta: t.panelCta || d.panelCta,
+        panelHref: t.panelHref || d.panelHref,
+        panelImage: t.panelImage || d.panelImage,
+      }
+    })
+
+    const doc = await AboutTabsContent.findOneAndUpdate(
+      { key: ABOUT_TABS_KEY },
+      { $set: { tabs: nextTabs }, $setOnInsert: { key: ABOUT_TABS_KEY } },
+      { upsert: true, new: true }
+    ).lean()
+
+    await logRecentActivity({
+      req,
+      action: 'cms.updated',
+      actor: req.admin?.email,
+      details: { key: ABOUT_TABS_KEY },
+    })
+
+    res.json({ ok: true, tabs: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const getAboutWhyChoose = async (req, res, next) => {
+  try {
+    const doc = await AboutWhyChooseContent.findOneAndUpdate(
+      { key: ABOUT_WHY_KEY },
+      { $setOnInsert: defaultAboutWhy() },
+      { upsert: true, new: true }
+    ).lean()
+
+    res.json({ ok: true, why: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const updateAboutWhyChoose = async (req, res, next) => {
+  try {
+    const defaults = defaultAboutWhy()
+    const incomingSkills = normalizeAboutWhySkills(req.body?.skills)
+
+    const nextDoc = {
+      whyLabel: toStringOrEmpty(req.body?.whyLabel) || defaults.whyLabel,
+      whyTitle1: toStringOrEmpty(req.body?.whyTitle1) || defaults.whyTitle1,
+      whyTitle2: toStringOrEmpty(req.body?.whyTitle2) || defaults.whyTitle2,
+      whyDesc: toStringOrEmpty(req.body?.whyDesc) || defaults.whyDesc,
+      whyCardTitle: toStringOrEmpty(req.body?.whyCardTitle) || defaults.whyCardTitle,
+      imageUrl: toStringOrEmpty(req.body?.imageUrl) || defaults.imageUrl,
+      skills: incomingSkills.length ? incomingSkills : defaults.skills,
+    }
+
+    const doc = await AboutWhyChooseContent.findOneAndUpdate(
+      { key: ABOUT_WHY_KEY },
+      { $set: nextDoc, $setOnInsert: { key: ABOUT_WHY_KEY } },
+      { upsert: true, new: true }
+    ).lean()
+
+    await logRecentActivity({
+      req,
+      action: 'cms.updated',
+      actor: req.admin?.email,
+      details: { key: ABOUT_WHY_KEY },
+    })
+
+    res.json({ ok: true, why: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const getAboutHelp = async (req, res, next) => {
+  try {
+    const doc = await AboutHelpContent.findOneAndUpdate(
+      { key: ABOUT_HELP_KEY },
+      { $setOnInsert: defaultAboutHelp() },
+      { upsert: true, new: true }
+    ).lean()
+
+    res.json({ ok: true, help: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const updateAboutHelp = async (req, res, next) => {
+  try {
+    const defaults = defaultAboutHelp()
+    const incomingCards = normalizeAboutHelpCards(req.body?.cards)
+
+    const nextDoc = {
+      helpTitle: toStringOrEmpty(req.body?.helpTitle) || defaults.helpTitle,
+      helpDesc: toStringOrEmpty(req.body?.helpDesc) || defaults.helpDesc,
+      helpCta: toStringOrEmpty(req.body?.helpCta) || defaults.helpCta,
+      helpHref: toStringOrEmpty(req.body?.helpHref) || defaults.helpHref,
+      imageUrl: toStringOrEmpty(req.body?.imageUrl) || defaults.imageUrl,
+      cards: incomingCards.length ? incomingCards : defaults.cards,
+    }
+
+    const doc = await AboutHelpContent.findOneAndUpdate(
+      { key: ABOUT_HELP_KEY },
+      { $set: nextDoc, $setOnInsert: { key: ABOUT_HELP_KEY } },
+      { upsert: true, new: true }
+    ).lean()
+
+    await logRecentActivity({
+      req,
+      action: 'cms.updated',
+      actor: req.admin?.email,
+      details: { key: ABOUT_HELP_KEY },
+    })
+
+    res.json({ ok: true, help: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const getAboutTeam = async (req, res, next) => {
+  try {
+    const doc = await AboutTeamContent.findOneAndUpdate(
+      { key: ABOUT_TEAM_KEY },
+      { $setOnInsert: defaultAboutTeam() },
+      { upsert: true, new: true }
+    ).lean()
+
+    res.json({ ok: true, team: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
+const updateAboutTeam = async (req, res, next) => {
+  try {
+    const defaults = defaultAboutTeam()
+    const incomingMembers = normalizeAboutTeamMembers(req.body?.members)
+
+    const nextDoc = {
+      teamLabel: toStringOrEmpty(req.body?.teamLabel) || defaults.teamLabel,
+      teamTitle: toStringOrEmpty(req.body?.teamTitle) || defaults.teamTitle,
+      teamDesc: toStringOrEmpty(req.body?.teamDesc) || defaults.teamDesc,
+      teamCta: toStringOrEmpty(req.body?.teamCta) || defaults.teamCta,
+      teamHref: toStringOrEmpty(req.body?.teamHref) || defaults.teamHref,
+      members: incomingMembers.length ? incomingMembers : defaults.members,
+    }
+
+    const doc = await AboutTeamContent.findOneAndUpdate(
+      { key: ABOUT_TEAM_KEY },
+      { $set: nextDoc, $setOnInsert: { key: ABOUT_TEAM_KEY } },
+      { upsert: true, new: true }
+    ).lean()
+
+    await logRecentActivity({
+      req,
+      action: 'cms.updated',
+      actor: req.admin?.email,
+      details: { key: ABOUT_TEAM_KEY },
+    })
+
+    res.json({ ok: true, team: doc })
+  } catch (err) {
+    next(err)
+  }
+}
+
 const updateHomeAbout = async (req, res, next) => {
   try {
     const defaults = defaultAbout()
@@ -737,6 +1234,18 @@ module.exports = {
   updateHomeHero,
   getHomeAbout,
   updateHomeAbout,
+  getAboutHero,
+  updateAboutHero,
+  getAboutIntro,
+  updateAboutIntro,
+  getAboutTabs,
+  updateAboutTabs,
+  getAboutWhyChoose,
+  updateAboutWhyChoose,
+  getAboutHelp,
+  updateAboutHelp,
+  getAboutTeam,
+  updateAboutTeam,
   getHomeServices,
   updateHomeServices,
   getHomeProcess,
