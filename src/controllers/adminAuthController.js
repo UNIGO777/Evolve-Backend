@@ -26,10 +26,10 @@ const generateOtp = () => String(crypto.randomInt(100000, 1000000))
 const requestAdminOtp = async (req, res, next) => {
   try {
     const email = normalizeEmail(req.body?.email)
-    const password = String(req.body?.password || '')
+    const password = String(req.body?.password || '').trim()
 
     const adminEmail = normalizeEmail(process.env.ADMIN_EMAIL)
-    const adminPassword = String(process.env.ADMIN_PASSWORD || '')
+    const adminPassword = String(process.env.ADMIN_PASSWORD || '').trim()
 
     if (!adminEmail || !adminPassword) {
       res.status(500)
@@ -37,8 +37,21 @@ const requestAdminOtp = async (req, res, next) => {
     }
 
     if (email !== adminEmail || password !== adminPassword) {
-      res.status(401)
-      throw new Error('Invalid credentials')
+      const isProd = String(process.env.NODE_ENV || '').toLowerCase() === 'production'
+      return res.status(401).json({
+        ok: false,
+        message: 'Invalid credentials',
+        ...(isProd
+          ? {}
+          : {
+              details: {
+                emailMatch: email === adminEmail,
+                passwordMatch: password === adminPassword,
+                receivedEmail: email,
+                receivedPasswordLen: password.length,
+              },
+            }),
+      })
     }
 
     const otp = generateOtp()
