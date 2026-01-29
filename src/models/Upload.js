@@ -7,6 +7,7 @@ const uploadSchema = new mongoose.Schema(
     relativePath: { type: String, required: true },
     mimetype: { type: String, required: true },
     size: { type: Number, required: true },
+    kind: { type: String, enum: ['file', 'image', 'video'], default: 'file', index: true },
   },
   { timestamps: true }
 )
